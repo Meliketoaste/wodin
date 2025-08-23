@@ -29,8 +29,9 @@ main :: proc() {
     display = x.OpenDisplay(nil)
     root = x.DefaultRootWindow(display)
 
-    for keymap in keyMaps  {
-        x.GrabKey(display, i32(x.KeysymToKeycode(display, keymap.key)), {.Mod4Mask}, root, true, .GrabModeAsync, .GrabModeAsync) }
+    for keymap in keyMaps {
+        x.GrabKey(display, i32(x.KeysymToKeycode(display, keymap.key)), {.Mod4Mask}, root, true, .GrabModeAsync, .GrabModeAsync) 
+    }
 
     for {
         x.NextEvent(display, &e)
