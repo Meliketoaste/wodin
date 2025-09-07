@@ -60,9 +60,10 @@ main :: proc() {
 
 
 change_current_ws :: proc (ws: u8) {
+    if ws >= NUM_WORKSPACES || ws == current_ws { return }
+    for win in spaces[ws].windows do x.MapWindow(display, win) 
     for win in spaces[current_ws].windows do x.UnmapWindow(display, win)
     current_ws = ws
-    for win in spaces[current_ws].windows do x.MapWindow(display, win)
 }
 
 keyMaps: = [?]struct{mod: x.InputMask, key: x.KeySym, action: proc()} {
